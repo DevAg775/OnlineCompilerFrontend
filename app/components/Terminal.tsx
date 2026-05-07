@@ -34,10 +34,10 @@ export default function Terminal({ executionId }: TerminalProps) {
         try {
           const message: WebSocketMessage = JSON.parse(event.data);
           console.log('Received message:', message);
-          
+
           const timestamp = new Date(message.timestamp).toLocaleTimeString();
 
-          switch(message.type) {
+          switch (message.type) {
             case 'output':
               setOutput(prev => [...prev, `[${timestamp}] ${message.data}`]);
               break;
@@ -63,7 +63,7 @@ export default function Terminal({ executionId }: TerminalProps) {
           if (outputRef.current) {
             outputRef.current.scrollTop = outputRef.current.scrollHeight;
           }
-        } catch (error) {
+        } catch (_error) {
           console.error('Raw message:', event.data);
           setOutput(prev => [...prev, `[Raw] ${event.data}`]);
         }
@@ -107,15 +107,14 @@ export default function Terminal({ executionId }: TerminalProps) {
     <div className="bg-black text-white font-mono p-4 rounded-b h-[200px] flex flex-col">
       <div className="flex-1 overflow-y-auto whitespace-pre-wrap" ref={outputRef}>
         {output.map((line, i) => (
-          <div 
-            key={i} 
-            className={`${
-              line.startsWith('[Error]') ? 'text-red-500' : 
-              line.startsWith('[System]') ? 'text-yellow-500' :
-              line.startsWith('[Input]') ? 'text-blue-500' :
-              line.startsWith('[Output]') ? 'text-green-500' : 
-              'text-gray-400'
-            }`}
+          <div
+            key={i}
+            className={`${line.startsWith('[Error]') ? 'text-red-500' :
+                line.startsWith('[System]') ? 'text-yellow-500' :
+                  line.startsWith('[Input]') ? 'text-blue-500' :
+                    line.startsWith('[Output]') ? 'text-green-500' :
+                      'text-gray-400'
+              }`}
           >
             {line}
           </div>

@@ -1,26 +1,22 @@
 'use client'
-import CodeEditor from './components/Editor';
-import Terminal from './components/Terminal';
-import { useState } from 'react';
+import { Navbar } from './components/landing/Navbar';
+import { Hero } from './components/landing/Hero';
+import { Features } from './components/landing/Features';
+import { Languages } from './components/landing/Languages';
+import { CodeDemo } from './components/landing/CodeDemo';
+import { CTA } from './components/landing/CTA';
+import { Footer } from './components/landing/Footer';
 
 export default function Home() {
-  const [executionId, setExecutionId] = useState<string | null>(null);
-
-  const handleEditorChange = (value: string | undefined) => {
-    // Optional: Handle code changes
-  };
-
   return (
-    <div className="w-full h-screen p-4">
-      <div className="h-[70vh]">
-        <CodeEditor
-          onChange={handleEditorChange}
-          onExecutionStart={setExecutionId}
-        />
-      </div>
-      <div className="h-[30vh] mt-4">
-        <Terminal executionId={"1"} />
-      </div>
-    </div>
+    <main className="relative min-h-screen bg-black text-white">
+      <Navbar />
+      <Hero />
+      <Features />
+      <Languages />
+      <CodeDemo />
+      <CTA />
+      <Footer />
+    </main>
   );
 }
