@@ -22,8 +22,7 @@ export default function Terminal({ executionId }: TerminalProps) {
   useEffect(() => {
     if (executionId) {
       console.log('Attempting to connect to WebSocket with executionId:', executionId);
-      wsRef.current = new WebSocket(`ws://localhost:8080/${executionId}`);
-
+      wsRef.current = new WebSocket(`ws://3.110.108.63:8080/${executionId}`);
       wsRef.current.onopen = () => {
         console.log('WebSocket connected successfully');
         setConnected(true);
@@ -110,10 +109,10 @@ export default function Terminal({ executionId }: TerminalProps) {
           <div
             key={i}
             className={`${line.startsWith('[Error]') ? 'text-red-500' :
-                line.startsWith('[System]') ? 'text-yellow-500' :
-                  line.startsWith('[Input]') ? 'text-blue-500' :
-                    line.startsWith('[Output]') ? 'text-green-500' :
-                      'text-gray-400'
+              line.startsWith('[System]') ? 'text-yellow-500' :
+                line.startsWith('[Input]') ? 'text-blue-500' :
+                  line.startsWith('[Output]') ? 'text-green-500' :
+                    'text-gray-400'
               }`}
           >
             {line}

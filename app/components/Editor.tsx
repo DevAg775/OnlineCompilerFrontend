@@ -23,7 +23,7 @@ export default function CodeEditor({ onChange, onExecutionStart }: CodeEditorPro
   const handleRunCode = async () => {
     try {
       setIsRunning(true);
-      const response = await fetch('http://localhost:3001/api/compile', {
+      const response = await fetch('https://onlinecompilerbackend-gnkk.onrender.com/api/compile', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -34,7 +34,7 @@ export default function CodeEditor({ onChange, onExecutionStart }: CodeEditorPro
           date: new Date().toISOString()
         }),
       });
-      
+
       const data = await response.json();
       if (data.executionId && onExecutionStart) {
         onExecutionStart(data.executionId);
@@ -60,15 +60,14 @@ export default function CodeEditor({ onChange, onExecutionStart }: CodeEditorPro
             </option>
           ))}
         </select>
-        
+
         <button
           onClick={handleRunCode}
           disabled={isRunning}
-          className={`px-4 py-1 rounded transition-colors ${
-            isRunning 
-              ? 'bg-gray-500 cursor-not-allowed' 
+          className={`px-4 py-1 rounded transition-colors ${isRunning
+              ? 'bg-gray-500 cursor-not-allowed'
               : 'bg-green-600 hover:bg-green-700 text-white'
-          }`}
+            }`}
         >
           {isRunning ? 'Running...' : 'Run Code'}
         </button>
