@@ -62,7 +62,7 @@ export default function Terminal({ executionId }: TerminalProps) {
           if (outputRef.current) {
             outputRef.current.scrollTop = outputRef.current.scrollHeight;
           }
-        } catch (_error) {
+        } catch{
           console.error('Raw message:', event.data);
           setOutput(prev => [...prev, `[Raw] ${event.data}`]);
         }
