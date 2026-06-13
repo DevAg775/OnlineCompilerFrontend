@@ -22,8 +22,8 @@ export default function Terminal({ executionId }: TerminalProps) {
   useEffect(() => {
     if (executionId) {
       console.log('Attempting to connect to WebSocket with executionId:', executionId);
-      wsRef.current = new WebSocket(`ws://3.110.108.63:8080/${executionId}`);
-      wsRef.current.onopen = () => {
+      wsRef.current = new WebSocket(`wss://3.110.108.63.nip.io/${executionId}`);
+       wsRef.current.onopen = () => {
         console.log('WebSocket connected successfully');
         setConnected(true);
         setOutput(prev => [...prev, '> Connected to execution environment']);
@@ -62,7 +62,7 @@ export default function Terminal({ executionId }: TerminalProps) {
           if (outputRef.current) {
             outputRef.current.scrollTop = outputRef.current.scrollHeight;
           }
-        } catch{
+        } catch {
           console.error('Raw message:', event.data);
           setOutput(prev => [...prev, `[Raw] ${event.data}`]);
         }
