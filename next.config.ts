@@ -8,7 +8,7 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: 'Content-Security-Policy',
-            value: "connect-src 'self' wss://online-compiler-devansh.serveousercontent.com https://onlinecompilerbackend-gnkk.onrender.com https://cdn.jsdelivr.net;"
+            value: "connect-src 'self' wss://animals-boost-expenses-personalized.trycloudflare.com https://onlinecompilerbackend-gnkk.onrender.com https://cdn.jsdelivr.net;"
           }
         ]
       }
