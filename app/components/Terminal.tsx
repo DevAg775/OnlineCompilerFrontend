@@ -22,8 +22,8 @@ export default function Terminal({ executionId }: TerminalProps) {
   useEffect(() => {
     if (executionId) {
       console.log('Attempting to connect to WebSocket with executionId:', executionId);
-      wsRef.current = new WebSocket(`wss://3.110.108.63.nip.io/${executionId}`);
-       wsRef.current.onopen = () => {
+      wsRef.current = new WebSocket(`wss://alternate-implement-analyzed-signatures.trycloudflare.com/${executionId}`); 
+      wsRef.current.onopen = () => {
         console.log('WebSocket connected successfully');
         setConnected(true);
         setOutput(prev => [...prev, '> Connected to execution environment']);
