@@ -8,7 +8,7 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: 'Content-Security-Policy',
-            value: "connect-src 'self' wss://3.110.108.63.nip.io https://onlinecompilerbackend-gnkk.onrender.com https://cdn.jsdelivr.net;"
+            value: "connect-src 'self' wss://alternate-implement-analyzed-signatures.trycloudflare.com https://onlinecompilerbackend-gnkk.onrender.com;"
           }
         ]
       }
